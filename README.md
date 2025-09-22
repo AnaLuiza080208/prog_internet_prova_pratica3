@@ -39,4 +39,3 @@ Gera um JWT válido por 1h.
      └─ routes/
           ├─ auth.js
           └─ users.js
-
