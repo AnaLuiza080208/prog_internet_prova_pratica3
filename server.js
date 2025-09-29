@@ -1,24 +1,23 @@
-import express from "express";
-import bodyParser from "body-parser";
-import authRoutes from "./routes/auth.js";
-import usersRoutes from "./routes/matricula.js";
-import path from "path";
-import { fileURLToPath } from "url";
+import express from 'express';
+import authRoutes from './routes/auth.js';
+import usersRoutes from './routes/users.js';
 
+// Inicializa a aplicação Express
 const app = express();
 const PORT = 3000;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Middleware para permitir que o servidor entenda JSON no corpo das requisições
+app.use(express.json());
 
-app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public")));
+// Define as rotas principais da aplicação
+// Todas as rotas em 'authRoutes' serão prefixadas com /auth (ex: /auth/register)
+app.use('/auth', authRoutes);
 
-app.use("/auth", authRoutes);
-app.use("/users", usersRoutes);
+// Todas as rotas em 'usersRoutes' serão prefixadas com /users (ex: /users/)
+app.use('/users', usersRoutes);
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+// Inicia o servidor e fá-lo escutar na porta definida
+app.listen(PORT, () => {
+  console.log(`Servidor a rodar na porta http://localhost:${PORT}`);
 });
 
-app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));

@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "id": "06e55d1e-b7f3-412e-a2f5-c9a4bc33d235",
+    "nome": "Utilizador de Teste",
+    "email": "teste@email.com",
+    "senha": "$2a$10$4o/7hlbnYzxfksCbfbGyRufnEJTR4nFrd5aj3QmS/KdqV2Eh7H4GC"
+  }
+]
